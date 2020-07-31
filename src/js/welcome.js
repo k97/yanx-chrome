@@ -16,15 +16,15 @@ const months = [
 
 const adjectives = [
     "an awesome",
-    "an amazing",
-    "a serene",
+    "an incredible",
     "a thoughtful",
-    "a dashing"
+    "a dashing",
+    "an amazing"
 ];
 
 let date = new Date();
 let today = date.getDate() + ' ' + months[date.getMonth()];
-let adjectiveVal = adjectives[Math.floor(Math.random() * adjectives.length)];
+var message = adjectives[date.getDay() % adjectives.length];
 
 document.getElementById('yx-date').innerHTML = today;
-document.getElementById('yx-adjectives').innerHTML = adjectiveVal;
+document.getElementById('yx-adjectives').innerHTML = message;
