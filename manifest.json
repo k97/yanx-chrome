@@ -1,0 +1,16 @@
+{
+    "name": "Yanx",
+    "version": "0.0.1",
+    "manifest_version": 2,
+    "description": "Yet Another Note Experience",
+    "homepage_url": "https://github.com/k97/",
+    "chrome_url_overrides": {
+      "newtab": "./dist/index.html"
+    },
+    "icons": {
+      "16": "./dist/static/icon-16x16.png",
+      "48": "./dist/static/icon-48x48.png",
+      "128": "./dist/static/icon-128x128.png"
+    },
+    "permissions": ["storage"]
+  }
