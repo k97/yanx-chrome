@@ -1,10 +1,11 @@
-export const storeKey = "yanxdrafts";
+import { date } from './config';
+
 
 export const updateNotebook = (key, data) => {
   let obj = {}
-  obj[storeKey] = data;
+  obj[key] = data;
 
-  if(!chrome.storage) {
+  if (!chrome.storage) {
     localStorage.setItem(key, JSON.stringify(obj));
     return
   }
@@ -19,7 +20,7 @@ export const readNotebook = (key, notebook) => {
     notebook.setContent(data, 0);
     return
   }
-  chrome.storage.sync.get([key], function(result) {
+  chrome.storage.sync.get([key], function (result) {
     let data = JSON.parse(result[key]);
     notebook.setContent(data, 0)
   });

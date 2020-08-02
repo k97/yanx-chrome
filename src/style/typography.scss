@@ -1,0 +1,54 @@
+.yx-header {
+  color: #535353;
+
+  font-style: normal;
+  margin: 0;
+  padding: 1.25rem 0;
+
+  font-size: 1.5rem;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.75;
+}
+
+p,
+.medium-editor-placeholder,
+li {
+  margin-top: 0;
+  font-size: 1.65rem;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #04CA83;
+}
+
+ol,
+ul {
+  margin-bottom: 1.75rem;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.yx-quotes {
+  p {
+    font-size: 1.20rem;
+  }
+
+  a {
+    font-size: 1.10rem;
+  }
+}

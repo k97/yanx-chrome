@@ -1,0 +1,41 @@
+
+.hide {
+    max-height: 0 !important;
+}
+
+.dropdown .title {
+	width: 100%;
+}
+
+.dropdown .title .fa-angle-right {
+	margin: 0 .7em 0 0;
+	transition: transform .3s;
+}
+
+.datemenu {
+	transition: max-height .5s ease-out;
+	max-height: 20em;
+	overflow: hidden;
+	background: #ebecf1;
+	position: absolute;
+	z-index: 1;
+	cursor: pointer;
+    border-radius: 0 8px 8px;
+}
+
+.datemenu .option {
+	display: inline-block;
+    margin: .3rem 1.5rem .3rem 0.5rem;
+    font-size: 1.15rem;
+    padding: 0.35rem 0.5rem;
+	border-radius: 0.45rem;
+
+	&:hover {
+		background: rgba(0, 0, 0, 0.05);
+	}
+}
+
+
+.rotate-90 {
+	transform: rotate(90deg);
+}
