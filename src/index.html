@@ -1,15 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>New Tab</title>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 </head>
-
 <body>
-  <div id="container">
-    <h1 class="yx-header">Hi, have <span id="yx-adjectives"></span> <span id="yx-date"></span></h1>
-    <div class="yx-body editable notepad"></div>
+
+    <section class="container">
+      <div class="row">
+        <div class="col-12">
+
+          <h1 class="yx-header">
+            <span>Hi, have</span>
+            <span id="yx-message"></span>
+
+            <span class="dropdown" id="yx-date">
+              <div class='title'>
+                <span id="yx-date-value"></span>
+                <i class="fa fa-angle-right"></i>
+              </div>
+              <div class='datemenu hide'></div>
+            </span>
+
+          </h1>
+
+          <div class="yx-body editable notepad"></div>
+          <footer class="yx-quotes">
+            <p id="yx-quote-text"></p>
+            <a id="yx-quote-author" target="_blank"></a>
+          </footer>
+
+        </div>
+      </div>
+    </section>
+
 </body>
 </html>

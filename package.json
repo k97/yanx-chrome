@@ -48,12 +48,12 @@
     "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
-	"dependencies": {
-		"font-awesome": "4.1.0",
-		"github-markdown-css": "^4.0.0",
-		"medium-editor": "^5.23.3",
-		"normalize.css": "^8.0.1"
-	},
+  "dependencies": {
+    "font-awesome": "4.1.0",
+    "github-markdown-css": "^4.0.0",
+    "medium-editor": "^5.23.3",
+    "normalize.css": "^8.0.1"
+  },
   "browserslist": [
     "> 1%",
     "last 2 versions"
