@@ -1,5 +1,8 @@
+.medium-editor-placeholder {
+  color: var(--notePlaceholderColor);
+}
+
 .yx-header {
-  color: #535353;
 
   font-style: normal;
   margin: 0;
@@ -28,10 +31,7 @@ li {
 a {
   text-decoration: none;
   transition: all 0.3s ease;
-}
-
-a:hover {
-  color: #04CA83;
+  color: var(--linkColor);
 }
 
 ol,
@@ -46,20 +46,24 @@ strong {
 .yx-quotes {
   p {
     font-size: 1.10rem;
-    color: #7f7f7f;
+    color: var(--quoteTextColor);
     quotes: "“" "”" "‘" "’";
+    letter-spacing: 0.25px;
     &::before {
         content: open-quote;
-        color: #999;
+        color: var(--quoteSymbolColor);
     }
     &::after {
         content: close-quote;
-        color: #999;
+        color: var(--quoteSymbolColor);
     }
   }
 
   a {
     font-size: 1.05rem;
-    color: #8b8b8b;
+    color: var(--quoteAuthorColor);
+    &:hover {
+      color: var(--linkColor)
+    }
   }
 }
