@@ -1,25 +1,21 @@
-import { months, storeKey } from './config';
-
-// Clear Storage
-function clearStorage(d, index) {
-  let sKey = storeKey+ ' - ' + d.toDateString();
-  localStorage.forEach()
-}
-
+import { months, storeKey, noteDateRef, date } from './config';
+import { initNotebook, setNotebook } from './store';
 
 // Date Function
 function initLastSevenDays() {
   const dates = [...Array(7)].map((val, i) => {
     const d = new Date();
     d.setDate(d.getDate() - i);
-    document.querySelector('.datemenu').innerHTML += ("<div class='option' data-date='" + d + "'>" + d.getDate() + ' ' + months[d.getMonth()].substring(0, 3) + "</div>");
+
+    let dateAttrValue = noteDateRef + d.toDateString().split(' ').join('-');
+    let dateDisplayValue = d.getDate() + ' ' + months[d.getMonth()].substring(0, 3);
+    document.querySelector('.datemenu').innerHTML += ("<div class='option' data-date='" + d + "' data-noteref='" + dateAttrValue + "'>" + dateDisplayValue + "</div>");
     // clearStorage(d, i);
     return d;
   })
   return dates;
 }
-
-export const sevenDays = initLastSevenDays();
+initLastSevenDays();
 
 function toggleClass(elem, className) {
   if (elem.className.indexOf(className) !== -1) {
@@ -53,6 +49,15 @@ function toggleMenuDisplay(e) {
   toggleClass(icon, 'rotate-90');
 }
 
+function setNotebookContent(dateObj, content) {
+  let eleRef = document.getElementById('yx-body');
+  eleRef.contentEditable = false;
+  if (dateObj.toString() == date.toString()) {
+    eleRef.contentEditable = true;
+  }
+  eleRef.innerHTML = content;
+}
+
 function handleOptionSelected(e) {
   toggleClass(e.target.parentNode, 'hide');
 
@@ -64,25 +69,15 @@ function handleOptionSelected(e) {
   let d = new Date(e.target.dataset.date);
   titleElem.textContent = d.getDate() + ' ' + months[d.getMonth()];
 
+  let selectedDateContent = initNotebook(null, e.target.dataset.noteref);
+  setNotebookContent(d, selectedDateContent)
 
-  //trigger custom event
-  document.querySelector('#yx-date-value').dispatchEvent(new Event('change'));
-  //setTimeout is used so transition is properly shown
   setTimeout(() => toggleClass(icon, 'rotate-90', 0));
 }
-
-function handleTitleChange(e) {
-  const result = document.getElementById('result');
-  result.innerHTML = 'The result is: ' + e.target.textContent;
-}
-
 //get elements
-const dropdownTitle = document.querySelector('.dropdown .title');
-const dropdownOptions = document.querySelectorAll('.dropdown .option');
+const dateTitle = document.querySelector('.dropdown .title');
+const dropdownDates = document.querySelectorAll('.dropdown .option');
 
 //bind listeners to these elements
-dropdownTitle.addEventListener('click', toggleMenuDisplay);
-
-dropdownOptions.forEach(option => option.addEventListener('click', handleOptionSelected));
-
-document.querySelector('.dropdown .title').addEventListener('change', handleTitleChange);
+dateTitle.addEventListener('click', toggleMenuDisplay);
+dropdownDates.forEach(option => option.addEventListener('click', handleOptionSelected));

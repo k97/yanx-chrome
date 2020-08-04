@@ -1,27 +1,43 @@
-import { date } from './config';
+import { date, storeKey, noteDateRef } from './config';
 
+var globalStore;
 
-export const updateNotebook = (key, data) => {
-  let obj = {}
-  obj[key] = data;
+export const initNotebook = (store, dateRef) => {
+  let note;
+  if (store) {
+    globalStore = store;
+    note = store[dateRef]
+  } else {
+    note = globalStore[dateRef]
+  }
+  note = (note && note.length) ? JSON.parse(note) : null;
+  return note;
+}
 
+export const updateNotebook = (data) => {
+  let dateRef = noteDateRef + date.toDateString().split(' ').join('-');
+  let obj = globalStore ? globalStore : {};
+  obj[dateRef] = data;
   if (!chrome.storage) {
-    localStorage.setItem(key, JSON.stringify(obj));
+    localStorage.setItem(storeKey, JSON.stringify(obj));
     return
   }
   chrome.storage.sync.set(obj);
 }
 
-export const readNotebook = (key, notebook) => {
+export const readNotebook = (datekey, editorRef) => {
   if (!chrome.storage) {
-    let result = localStorage.getItem(key);
-    let obj = (result && result.length) ? JSON.parse(result) : '';
-    let data = (obj) ? JSON.parse(obj[key]) : '';
-    notebook.setContent(data, 0);
+    let result = localStorage.getItem(storeKey);
+    let storeBlob = JSON.parse(result);
+    let data = initNotebook(storeBlob, datekey);
+    editorRef.setContent(data, 0);
     return
   }
-  chrome.storage.sync.get([key], function (result) {
-    let data = JSON.parse(result[key]);
-    notebook.setContent(data, 0)
+
+  chrome.storage.sync.get([datekey], function (result) {
+    let data = initNotebook(result, datekey);
+    editorRef.setContent(data, 0);
   });
 }
+
+

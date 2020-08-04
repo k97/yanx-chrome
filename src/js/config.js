@@ -1,5 +1,7 @@
 export const date = new Date();
 export const storeKey = "yanxdrafts";
+export const noteDateRef = "yanx-note-";
+
 export const quoteObjKey = "yanxquote";
 export const cachedQKey = "yanxcachedquote"
 
