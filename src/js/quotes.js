@@ -27,20 +27,15 @@ const setQuoteContent = (obj) => {
     document.getElementById('yx-quote-author').href = 'https://google.com/search?q=' + obj.author + '+quotes';
 }
 
-const initQuote = () => {
+export const initQuote = () => {
     const cacheKeyVal = localStorage.getItem(cachedQKey);
     const savedDate = cacheKeyVal ? JSON.parse(cacheKeyVal).split(' - ') : null;
 
     // A new quote everyday :)
     if (savedDate && savedDate[1] == date.toDateString()) {
-        console.log('Init local quote');
         getLocalQuote();
     } else {
         localStorage.removeItem(cacheKeyVal);
         loadQuoteSource();
     }
 }
-
-
-initQuote();
-

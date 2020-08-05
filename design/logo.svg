@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="738px" height="850px" viewBox="0 0 738 850" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 63.1 (92452) - https://sketch.com -->
+    <title>Y + Oval Mask</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="425 0 793.060797 212.5 793.060797 637.5 425 850 56.9392034 637.5 56.9392034 212.5"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Y-+-Oval-Mask" transform="translate(-56.000000, 0.000000)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Mask" fill="#000000" xlink:href="#path-1"></use>
+            <text id="Y" mask="url(#mask-2)" font-family="Inter-Bold, Inter" font-size="535" font-weight="bold" fill="#FFFFFF">
+                <tspan x="232.808858" y="648.063152">Y</tspan>
+            </text>
+            <ellipse id="Oval" fill="#04DE71" mask="url(#mask-2)" cx="592.424242" cy="589.484357" rx="56.4685315" ry="56.6338355"></ellipse>
+        </g>
+    </g>
+</svg>
