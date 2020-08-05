@@ -7,9 +7,9 @@
 @import './grid.scss';
 @import './typography.scss';
 @import './dropdown.scss';
+@import './modal.scss';
 
 * {
-  font-family: var(--fontFamily);
   font-style: normal;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
@@ -18,6 +18,7 @@
 body {
   background-color: var(--bodyBackground);
   color: var(--bodyColor);
+  font-family: var(--fontFamily);
 }
 
 h1,
@@ -48,7 +49,7 @@ strong {
   cursor: pointer;
 }
 
-.yx-body.editable {
+.editable {
   min-height: 200px;
   padding: 1.0rem 2.0rem;
 
@@ -59,12 +60,24 @@ strong {
   background-image: var(--noteBgImage);
   box-shadow: var(--noteBoxShadow);
   border-radius: 0.75rem;
+  opacity: 1.0;
 
 
   &:focus {
     outline: none;
   }
 
+}
+
+.yanx-note-readonly {
+  cursor: not-allowed;
+  box-shadow: none;
+  color: var(--noteDisabledColor);
+  transition: all .5s linear;
+  opacity: 0.8;
+  &::after {
+    content: ''!important;
+  }
 }
 
 
@@ -84,4 +97,24 @@ strong {
       content: ' - ';
     }
   }
+}
+
+
+
+.yx-info-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  cursor: pointer;
+
+  img {
+    width: 25px;
+    height: 25px;
+    opacity: 0.35;
+    @media screen and (prefers-color-scheme: dark) {
+      opacity: 0.65;
+      filter: invert(1);
+    }
+  }
+
 }
