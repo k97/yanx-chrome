@@ -11,7 +11,9 @@ const notesTweeters = [
   "Fill me with words",
   "Don't forget that",
 ];
-const placeholderText = notesTweeters[date.getDay() % notesTweeters.length];
+
+export const placeholderText = notesTweeters[date.getDay() % notesTweeters.length];
+
 export const noteConfig = {
   toolbar: {
     buttons: ['bold', 'underline', 'strikethrough', 'anchor', 'orderedlist', 'pre', 'outdent', 'indent', 'h3'],

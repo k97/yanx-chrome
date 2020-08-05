@@ -7,35 +7,55 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <link href="main.css" rel="stylesheet"></head>
+
 <body>
 
-    <section class="container">
-      <div class="row">
-        <div class="col-12">
+  <section class="container">
+    <div class="row">
+      <div class="col-12">
 
-          <h1 class="yx-header">
-            <span>Hi, have</span>
-            <span id="yx-message"></span>
+        <h1 class="yx-header">
+          <span>Hi, have</span>
+          <span id="yx-message"></span>
 
-            <span class="dropdown" id="yx-date">
-              <div class='title'>
-                <span id="yx-date-value"></span>
-                <i class="fa fa-angle-right"></i>
-              </div>
-              <div class='datemenu hide'></div>
-            </span>
+          <span class="dropdown" id="yx-date">
+            <div class='title'>
+              <span id="yx-date-value"></span>
+              <i class="fa fa-angle-right"></i>
+            </div>
+            <div class='datemenu hide'></div>
+          </span>
 
-          </h1>
+        </h1>
 
-          <div class="yx-body editable notepad" id="yx-body"></div>
-          <footer class="yx-quotes">
-            <p id="yx-quote-text"></p>
-            <a id="yx-quote-author" target="_blank"></a>
-          </footer>
+        <div class="yx-body editable notepad" id="yx-body"></div>
+        <footer class="yx-quotes">
+          <p id="yx-quote-text"></p>
+          <a id="yx-quote-author" target="_blank"></a>
+        </footer>
 
-        </div>
+
       </div>
-    </section>
+    </div>
+  </section>
+  <div class="yx-info-icon modal-trigger">
+    <img src="./static/info.svg" alt="info icon" />
+  </div>
+
+  <div class="modal">
+    <div class="modal-content">
+      <span class="close-button">×</span>
+      <section class="modal-copy">
+        <h1>Yet Another Note Experience</h1>
+        <div>
+          <p>Made to address frustrations by <a href="https://twitter.com/k97co" target="_blank">Karthik</a>.</p>
+          <p>Based on <a href="https://github.com/yabwe/medium-editor" target="_blank">Medium Editor</a> and uses <a href="https://github.com/weiweihuanghuang/Work-Sans" target="_blank">Work Sans</a> typeface.</p>
+          <p class="small-text">No tracking 🙈</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
 
 <script type="text/javascript" src="app.bundle.js"></script></body>
 </html>

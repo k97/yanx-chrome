@@ -1,23 +1,7 @@
-import { months, storeKey, noteDateRef, date } from './config';
-import { initNotebook, setNotebook } from './store';
+import { months, storeKey, noteDateRef, date, placeholderText, noteConfig } from './config';
+import { getNotebook, setNotebook } from './store';
 
-// Date Function
-function initLastSevenDays() {
-  const dates = [...Array(7)].map((val, i) => {
-    const d = new Date();
-    d.setDate(d.getDate() - i);
-
-    let dateAttrValue = noteDateRef + d.toDateString().split(' ').join('-');
-    let dateDisplayValue = d.getDate() + ' ' + months[d.getMonth()].substring(0, 3);
-    document.querySelector('.datemenu').innerHTML += ("<div class='option' data-date='" + d + "' data-noteref='" + dateAttrValue + "'>" + dateDisplayValue + "</div>");
-    // clearStorage(d, i);
-    return d;
-  })
-  return dates;
-}
-initLastSevenDays();
-
-function toggleClass(elem, className) {
+const toggleClass = (elem, className) => {
   if (elem.className.indexOf(className) !== -1) {
     elem.className = elem.className.replace(className, '');
   }
@@ -28,7 +12,7 @@ function toggleClass(elem, className) {
   return elem;
 }
 
-function toggleDisplay(elem) {
+const toggleDisplay = (elem) => {
   const curDisplayStyle = elem.style.display;
 
   if (curDisplayStyle === 'none' || curDisplayStyle === '') {
@@ -40,7 +24,7 @@ function toggleDisplay(elem) {
 
 }
 
-function toggleMenuDisplay(e) {
+export const toggleMenuDisplay = (e) => {
   const dropdown = e.currentTarget.parentNode;
   const menu = dropdown.querySelector('.datemenu');
   const icon = dropdown.querySelector('.fa-angle-right');
@@ -49,16 +33,19 @@ function toggleMenuDisplay(e) {
   toggleClass(icon, 'rotate-90');
 }
 
-function setNotebookContent(dateObj, content) {
+const setNotebookContent = (dateObj, content) => {
   let eleRef = document.getElementById('yx-body');
   eleRef.contentEditable = false;
+  eleRef.classList.add('yanx-note-readonly');
   if (dateObj.toString() == date.toString()) {
+    // eleRef.dataset.placeholder = '';
     eleRef.contentEditable = true;
+    eleRef.classList.remove('yanx-note-readonly');
   }
   eleRef.innerHTML = content;
 }
 
-function handleOptionSelected(e) {
+export const handleOptionSelected = (e) => {
   toggleClass(e.target.parentNode, 'hide');
 
   const id = e.target.id;
@@ -69,15 +56,20 @@ function handleOptionSelected(e) {
   let d = new Date(e.target.dataset.date);
   titleElem.textContent = d.getDate() + ' ' + months[d.getMonth()];
 
-  let selectedDateContent = initNotebook(null, e.target.dataset.noteref);
+  let selectedDateContent = getNotebook(null, e.target.dataset.noteref);
   setNotebookContent(d, selectedDateContent)
 
   setTimeout(() => toggleClass(icon, 'rotate-90', 0));
 }
-//get elements
-const dateTitle = document.querySelector('.dropdown .title');
-const dropdownDates = document.querySelectorAll('.dropdown .option');
 
-//bind listeners to these elements
-dateTitle.addEventListener('click', toggleMenuDisplay);
-dropdownDates.forEach(option => option.addEventListener('click', handleOptionSelected));
+// Date Function
+export const initDropdownDates = () => {
+  const dates = [...Array(7)].map((val, i) => {
+    const d = new Date();
+    d.setDate(d.getDate() - i);
+    const dateAttrValue = noteDateRef + d.toDateString().split(' ').join('-');
+    const dateDisplayValue = d.getDate() + ' ' + months[d.getMonth()].substring(0, 3);
+    document.querySelector('.datemenu').innerHTML += ("<div class='option' data-date='" + d + "' data-noteref='" + dateAttrValue + "'>" + dateDisplayValue + "</div>");
+  })
+}
+
